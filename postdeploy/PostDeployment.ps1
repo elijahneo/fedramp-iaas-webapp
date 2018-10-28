@@ -35,9 +35,9 @@ function loginToAzure {
 		[int]$lginCount
 	)
 
-	Write-Host "Please login using Azure Government credentials." -ForegroundColor Yellow
+	Write-Host "Please login using Azure Cloud credentials." -ForegroundColor Yellow
 	
-	Login-AzureRmAccount -EnvironmentName "AzureUSGovernment" -ErrorAction SilentlyContinue 	
+	Login-AzureRmAccount -EnvironmentName "AzureCloud" -ErrorAction SilentlyContinue 	
 
 	if($?) {
 		Write-Host "Login Successful!" -ForegroundColor Green
@@ -49,7 +49,7 @@ function loginToAzure {
 			loginToAzure -lginCount $lginCount
 		} 
                 else {
-			Write-Host "Credentials input are incorrect, invalid, or exceed the maximum number of retries. Verify the Azure Government account information used is correct." -ForegroundColor Magenta
+			Write-Host "Credentials input are incorrect, invalid, or exceed the maximum number of retries. Verify the Azure Cloud account information used is correct." -ForegroundColor Magenta
 			Write-Host "Press any key to exit..." -ForegroundColor Yellow
 			$x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 			Exit
