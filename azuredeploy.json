@@ -4,7 +4,7 @@
     "parameters": {
         "environmentName": {
             "type": "string",
-            "defaultValue": "AzureUSGovernment",
+            "defaultValue": "AzureCloud",
             "metadata": {
                 "description": "The name of the Azure envrionment for use with the deployment (Azure Commercial or Azure Government)."
             }
@@ -250,12 +250,12 @@
         "staticIPWEBStart": 5,
         "RDPNAT": "RDP",
         "omsSettings": {
-          "workspaceRegion": "USGov Virginia",
+          "workspaceRegion": "Southeast Asia",
           "serviceTier": "PerNode",
           "dataRetention": 365
         },
         "vmSettings": {
-            "location": "USGov Virginia",
+            "location": "Southeast Asia",
             "dc": {
                 "imagePublisher": "MicrosoftWindowsServer",
                 "imageOffer": "WindowsServer",
@@ -283,7 +283,7 @@
         },
         "VnetID": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkNameWithSuffix'))]",
         "derivedIds": {
-            "keyVaultUrl": "[concat('https://', parameters('keyVaultName') ,'.vault.usgovcloudapi.net/')]",
+            "keyVaultUrl": "[concat('https://', parameters('keyVaultName') ,'.vault.azure.net/')]",
             "keyVaultId": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', parameters('keyVaultResourceGroupName'), '/providers/Microsoft.KeyVault/vaults/', parameters('keyVaultName'))]",
             "dcSubnet": "[concat(variables('VnetID'),'/subnets/', variables('subnets').dc.name)]",
             "sqlSubnet": "[concat(variables('VnetID'),'/subnets/', variables('subnets').sql.name)]",
@@ -435,7 +435,7 @@
             "diskEncryptionExtensionVersion": "1.1",
             "encryptionOperation": "EnableEncryption",
             "keyEncryptionAlgorithm": "RSA-OAEP",
-            "keyVaultURL": "[concat('https://', parameters('keyVaultName'), '.vault.usgovcloudapi.net/')]",
+            "keyVaultURL": "[concat('https://', parameters('keyVaultName'), '.vault.azure.net/')]",
             "provisioningVMAzureDiskEncryptionUrl": "[concat(parameters('templatesBaseUrl'),'/configuringVMAzureDiskEncryption-kek','.json')]",
             "keyVaultId": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', parameters('keyVaultResourceGroupName'), '/providers/Microsoft.KeyVault/vaults/', parameters('keyVaultName'))]",
             "keyVaultResourceID": "[concat(subscription().id,'/resourceGroups/',parameters('keyVaultResourceGroupName'),'/providers/Microsoft.KeyVault/vaults/', parameters('keyVaultName'))]"
